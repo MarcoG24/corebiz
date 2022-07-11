@@ -1,0 +1,30 @@
+.nav-bar{
+    padding-left: 13vh !important;
+    padding-right: 13vh !important;
+    padding-top: 1vh !important;
+    padding-bottom: 3vh !important;
+}
+.nav-bar-button{
+    background-color: transparent !important;
+    color: black !important;
+    border: 0px !important;
+}
+.search{
+    border-color: white !important;
+}
+.form-navbar{
+    border-bottom: 1px solid #7A7A7A;;
+}
+.span-navbar{
+    padding-left: 1vh;
+}
+
+
+.prueba{
+    color: red;
+}
+@media (max-width: 768px) {
+    .prueba {
+        color: blue;
+    }
+}
