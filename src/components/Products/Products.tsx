@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useState } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 import { LeftArrow, RightArrow } from "./arrows";
@@ -7,26 +6,43 @@ import { CardProduct } from "./card";
 import "./globalStyles.css";
 import "./Products.scss";
 import usePreventBodyScroll from "./usePreventBodyScroll";
-import { getDataMock } from '../../services/HTTPWraper';
+import { getData } from '../../services/HTTPWraper';
 
 import "./hideScrollbar.css";
 import { Container } from "react-bootstrap";
+import { any } from "prop-types";
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
-
-const productsData = () => {
-    console.log('aqui va los datos del producto')
-    const res = getDataMock()
-    console.log(res)
-    // if (res.status) {
-    //     return res.data
-    // }
-    return res
+type ResponseItem = {
+    imageUrl: string
+    installments: number[]
+    listPrice: number
+    price: number
+    productId: number
+    productName: string
+    stars: number
 }
 
+
+
+
 function App() {
-  const [items] = React.useState(productsData);
+    const defaultItems:ResponseItem[] = [];
+    const getDataProducts = () => {
+        getData()
+          .then((response: any) => {
+            setItems(response.data)
+          })
+          .catch((e: Error) => {
+            console.log(e);
+          });
+    }
+    getDataProducts()
+
+  const [items, setItems]: [ResponseItem[], (items: ResponseItem[]) => void] = React.useState(defaultItems);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
+
+  
 
   return (
     <>
@@ -38,11 +54,11 @@ function App() {
             RightArrow={RightArrow}
             onWheel={onWheel}
           >
-            {items.map((data) => (
-              <CardProduct
-                dataProduct={data}
-              />
-            ))}
+            {items?.map((data: any) => (
+                <CardProduct
+                  dataProduct={data}
+                />
+              ))}
           </ScrollMenu>
         </div>
       </div>

@@ -30,7 +30,6 @@ function currencyFormat(num: number, event: string) {
  }
 
  const quantity = (installments: any) => {
-    var dataQuantity = 0
     if (installments.length > 0) {
         return 'O en ' + String(installments[0].quantity) + 'x de $' + String(currencyFormat(installments[0].value, ''))
     }
