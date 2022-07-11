@@ -7,22 +7,12 @@ import { CardProduct } from "./card";
 import "./globalStyles.css";
 import "./Products.scss";
 import usePreventBodyScroll from "./usePreventBodyScroll";
-import { getData, getDataMock } from '../../services/HTTPWraper';
+import { getDataMock } from '../../services/HTTPWraper';
 
-// NOTE: embrace power of CSS flexbox!
 import "./hideScrollbar.css";
 import { Container } from "react-bootstrap";
-// import "./firstItemMargin.css";
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
-
-const elemPrefix = "test";
-const getId = (index: number) => `${elemPrefix}${index}`;
-
-const getItems = () =>
-  Array(20)
-    .fill(0)
-    .map((_, ind) => ({ id: getId(ind) }));
 
 const productsData = () => {
     console.log('aqui va los datos del producto')
