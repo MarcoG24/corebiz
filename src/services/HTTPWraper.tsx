@@ -5,11 +5,12 @@ export function getData() {
 }
 
 export function postData(api_data: any) {
-    axios({
+    return axios({
         method: 'post', 
         url: 'https://corebiz-test.herokuapp.com/api/v1/newsletter',
         data: {
-          api_data
+          'email': api_data['email'],
+          'name': api_data['name']
         }
       })
 }
