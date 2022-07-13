@@ -10,7 +10,6 @@ import { getData } from '../../services/HTTPWraper';
 
 import "./hideScrollbar.css";
 import { Container } from "react-bootstrap";
-import { any } from "prop-types";
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 type ResponseItem = {
@@ -22,9 +21,6 @@ type ResponseItem = {
     productName: string
     stars: number
 }
-
-
-
 
 function App() {
     const defaultItems:ResponseItem[] = [];
@@ -42,12 +38,14 @@ function App() {
   const [items, setItems]: [ResponseItem[], (items: ResponseItem[]) => void] = React.useState(defaultItems);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
 
-  
-
   return (
     <>
+    <Container fluid className="title-container-products">
+      <span><strong>Más vendidos</strong></span>
+      <br /><hr className="hr-container-products"/>
+    </Container>
     <Container fluid className='container-products'>
-      <div className="example" style={{ paddingTop: "100px" }}>
+      <div className="example">
         <div onMouseEnter={disableScroll} onMouseLeave={enableScroll}>
           <ScrollMenu
             LeftArrow={LeftArrow}

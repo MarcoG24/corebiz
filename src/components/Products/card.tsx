@@ -2,14 +2,15 @@ import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai";
+import "./Products.scss";
 
 const imgStars = (stars: number) => {
     var script = []
     for (var i = 1; i < 5; i++) {
         if (i <= stars) {
-            script.push(<AiTwotoneStar />) 
+            script.push(<AiTwotoneStar className='style-star'/>) 
         } else {
-            script.push(<AiOutlineStar />)
+            script.push(<AiOutlineStar className='style-star'/>)
         }
     }
     return script
@@ -39,10 +40,10 @@ export function CardProduct({ dataProduct }: { dataProduct: any;}) {
   
   
   return (
-    <Card style={{ width: '18rem' }} className="text-center">
+    <Card className="text-center style-card">
       <Card.Img variant="top" src={dataProduct.imageUrl} />
-      <Card.Body>
-        <Card.Title>{dataProduct.productName}</Card.Title>
+      <Card.Body className='body-card'>
+        <Card.Title className='title-card'>{dataProduct.productName}</Card.Title>
         <Card.Text>
           {
             imgStars(dataProduct.stars)
@@ -50,12 +51,12 @@ export function CardProduct({ dataProduct }: { dataProduct: any;}) {
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>{currencyFormat(dataProduct.listPrice, 'listPrice')}</ListGroup.Item>
-        <ListGroup.Item style={{fontWeight: "bold"}}>{currencyFormat(dataProduct.price, 'price')}</ListGroup.Item>
-        <ListGroup.Item>{quantity(dataProduct.installments)}</ListGroup.Item>
+        <ListGroup.Item className='style-list-group small-size'>{currencyFormat(dataProduct.listPrice, 'listPrice')}</ListGroup.Item>
+        <ListGroup.Item className='style-list-group' style={{fontWeight: "bold"}}>{currencyFormat(dataProduct.price, 'price')}</ListGroup.Item>
+        <ListGroup.Item className='style-list-group small-size'>{quantity(dataProduct.installments)}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Button variant="primary">Comprar</Button>
+        <Button variant="dark">Comprar</Button>
       </Card.Body>
     </Card>
   );

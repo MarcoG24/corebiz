@@ -1,6 +1,8 @@
 import React from "react";
-
+import { IoIosArrowForward } from "react-icons/io";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
+import { MdArrowBackIosNew } from "react-icons/md";
+import "./Products.scss";
 
 function Arrow({
   children,
@@ -24,6 +26,7 @@ function Arrow({
         opacity: disabled ? "0" : "1",
         userSelect: "none"
       }}
+      className='style-arrow'
     >
       {children}
     </button>
@@ -50,7 +53,7 @@ export function LeftArrow() {
 
   return (
     <Arrow disabled={disabled} onClick={() => scrollPrev()}>
-      Left
+      <MdArrowBackIosNew className="style-icon-arrow"/>
     </Arrow>
   );
 }
@@ -74,7 +77,7 @@ export function RightArrow() {
 
   return (
     <Arrow disabled={disabled} onClick={() => scrollNext()}>
-      Right
+      <IoIosArrowForward className="style-icon-arrow"/>
     </Arrow>
   );
 }
