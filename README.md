@@ -2,6 +2,7 @@
 - React
 - Typescript
 - Axios
+- Formik
 
 ## Getting Started with Create React App
 
@@ -20,10 +21,8 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### pending things to finish:
-- Improve page styles
-- Make the page responsive
+- Make the page responsive from movile version
 - add footer
-- save newsletter data
 - add search functionality
 - auto increment number of products in cart using cookies
 - popup with shopping cart data
